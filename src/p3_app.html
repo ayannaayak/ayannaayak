@@ -1,0 +1,67 @@
+
+<div id="app" class="app" hidden>
+  <header class="tb">
+    <button class="tb-back" id="goHome" aria-label="Back to the home page"><svg class="i" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg><span>Home</span></button>
+    <div class="tb-title"><span class="mark"></span><b>Who is Ayan?</b><span class="tb-tag">portfolio workflow</span></div>
+    <div class="tb-r">
+      <div class="prog" title="Nodes you have explored"><svg viewBox="0 0 26 26" aria-hidden="true"><circle class="trk" cx="13" cy="13" r="11"/><circle class="bar" id="progBar" cx="13" cy="13" r="11"/></svg><span id="progTxt">0/15</span><span class="prog-l">explored</span></div>
+      <button class="tbtn" id="tplBtn" aria-haspopup="true" aria-label="Templates"><svg class="i" viewBox="0 0 24 24"><rect x="3.500" y="3.500" width="7" height="7" rx="1.500"/><rect x="13.500" y="3.500" width="7" height="7" rx="1.500"/><rect x="3.500" y="13.500" width="7" height="7" rx="1.500"/><rect x="13.500" y="13.500" width="7" height="7" rx="1.500"/></svg><span>Templates</span></button>
+      <button class="tbtn icon" id="moreBtn" aria-haspopup="true" aria-label="More options"><svg class="i" viewBox="0 0 24 24"><path d="M5 12h.01M12 12h.01M19 12h.01" stroke-width="3"/></svg></button>
+      <button class="tbtn hot" id="hireBtn">Hire Ayan</button>
+    </div>
+  </header>
+
+  <div class="main" id="main">
+    <div class="stage" id="stage" aria-label="Workflow canvas">
+      <div class="glow"></div>
+      <div class="world" id="world">
+        <svg class="wires" width="1" height="1" aria-hidden="true">
+          <defs>
+            <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M1.500 1.500L8.500 5L1.500 8.500" fill="none" stroke="#6a6f78" stroke-width="1.800" stroke-linecap="round" stroke-linejoin="round"/></marker>
+            <marker id="arrOk" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M1.500 1.500L8.500 5L1.500 8.500" fill="none" stroke="#3ecf8e" stroke-width="1.800" stroke-linecap="round" stroke-linejoin="round"/></marker>
+            <marker id="arrHot" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M1.500 1.500L8.500 5L1.500 8.500" fill="none" stroke="#ff5a1f" stroke-width="1.800" stroke-linecap="round" stroke-linejoin="round"/></marker>
+          </defs>
+          <g id="edges"></g><path id="ghost" d=""/><g id="fx"></g>
+        </svg>
+        <div id="stickies"></div>
+        <div id="nodes"></div>
+      </div>
+      <button class="addfab" id="addFab" aria-label="Add a node" title="Add a node (Ctrl + K)">+</button>
+      <div class="zoom" role="group" aria-label="Canvas view">
+        <button id="zFit" title="Fit to screen" aria-label="Fit to screen"><svg class="i" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+        <button id="zIn" class="zx" title="Zoom in" aria-label="Zoom in"><svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+        <button id="zOut" class="zx" title="Zoom out" aria-label="Zoom out"><svg class="i" viewBox="0 0 24 24"><path d="M5 12h14"/></svg></button>
+        <button id="zTidy" title="Tidy up" aria-label="Tidy up the canvas"><svg class="i" viewBox="0 0 24 24"><path d="M4 6h10M4 12h16M4 18h7"/></svg></button>
+      </div>
+      <div class="runbar"><div class="runstat" id="runstat" hidden role="status"></div>
+        <button class="exec" id="exec"><svg class="i" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.800 3h10.400a2 2 0 0 0 1.800-3l-5-9V3"/></svg>Execute workflow</button>
+      </div>
+      <div class="toast" id="toast" hidden role="status"></div>
+      <div class="hint">Drag a node's dot to connect · Scroll to pan · Ctrl + scroll to zoom<br>Preview · sample content</div>
+    </div>
+
+    <aside class="picker" id="picker" hidden aria-label="Add a node">
+      <div class="pk-h"><div><h2>What happens next?</h2><p>Pick what you want to know. It connects after <b id="pkSrc">the trigger</b>.</p></div><button class="ib" id="pkX" aria-label="Close"><svg class="i" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+      <div class="pk-s"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.500-4.500"/></svg><input id="pkQ" placeholder="Search nodes" autocomplete="off" aria-label="Search nodes"></div>
+      <div class="pk-list" id="pkList"></div>
+      <div class="pk-f"><span>No time?</span><button class="lnk" data-tpl="tour">Build the 60-second tour for me</button></div>
+    </aside>
+
+    <div class="menu" id="tplMenu" hidden>
+      <h3>Start from a template</h3>
+      <button class="mi" data-tpl="tour"><b>The 60-second tour</b><small>About, projects, results and contact. 4 nodes.</small></button>
+      <button class="mi" data-tpl="hire"><b>Should I hire Ayan?</b><small>Services, projects, client words, process and a call. 5 nodes.</small></button>
+      <button class="mi" data-tpl="all"><b>Everything</b><small>All 15 nodes, wired by topic.</small></button>
+      <hr>
+      <button class="mi" data-tpl="reset"><b>Start from scratch</b><small>Clear the canvas and keep only the trigger.</small></button>
+    </div>
+    <div class="menu" id="moreMenu" hidden>
+      <button class="mi" data-more="copy"><b>Copy as n8n workflow</b><small>Get this canvas as JSON you can paste into n8n.</small></button>
+      <button class="mi" data-more="tidy"><b>Tidy up</b><small>Line the nodes up neatly.</small></button>
+      <button class="mi" data-more="intro"><b>Show the start note again</b><small>Bring back the yellow how-to note.</small></button>
+    </div>
+
+    <section class="page" id="page" hidden role="dialog" aria-modal="true" aria-label="Node output"></section>
+    <div class="modal" id="modal" hidden role="dialog" aria-modal="true"></div>
+  </div>
+</div>
