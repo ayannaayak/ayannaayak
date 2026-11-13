@@ -26,7 +26,9 @@
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scrollbar-color:var(--line-3) var(--bg)}
+::selection{background:color-mix(in srgb,var(--accent) 38%,transparent);color:var(--text)}
+input,textarea{caret-color:var(--accent)}
 html.in-app,html.in-app body{overflow:hidden}
 body{margin:0;background:var(--bg);color:var(--text);font-family:var(--f-body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:200;background:var(--bg)}

@@ -73,43 +73,43 @@ const AGENT_SUBS=`<div class="a-subs"><svg viewBox="0 0 214 112" aria-hidden="tr
   <span class="a-sub" style="left:167px"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.600 5.600l2.100 2.100M16.300 16.300l2.100 2.100M18.400 5.600l-2.100 2.100M7.700 16.300l-2.100 2.100"/></svg><small>Tools</small></span></div>`;
 
 /* ---------- content (sample copy for the preview) ---------- */
-const head=(eb,h,lede)=>`<div class="pg-hero"><span class="eb dot">${eb}</span><h1>${h}</h1>${lede?`<p class="lede">${lede}</p>`:''}</div>`;
+const head=(eb,h,lede)=>`<div class="pg-hero"><h1>${h}</h1>${lede?`<p class="lede">${lede}</p>`:''}</div>`;
 
 const PROJECTS=[
-  {photo:'p1',title:'Leads answered in 2 minutes',client:'B2B SaaS team',tag:'Sales',chain:['Form','Enrich','AI score','IF hot','CRM','Slack'],
+  {photo:'p1',title:'Inbound leads, scored and routed',client:'B2B SaaS team',tag:'Sales',chain:['Form','Enrich','AI score','IF hot','CRM','Slack'],
    problem:'Sales replied to inbound leads after about four hours. Good leads went cold.',
    built:'Every lead is enriched, scored against their ideal customer and sent to the right rep in Slack.',
-   result:[['4h → 2min','first reply'],['+31%','demos booked']]},
-  {photo:'p2',title:'Invoices that book themselves',client:'Accounting firm',tag:'Operations',chain:['Gmail','OCR','AI extract','Check totals','Zoho Books'],
+   result:[['4h → 10 min','time to first reply'],['+18%','demos booked']]},
+  {photo:'p2',title:'Supplier invoices booked from email',client:'Accounting firm',tag:'Operations',chain:['Gmail','OCR','AI extract','Check totals','Zoho Books'],
    problem:'Two people spent most of every month typing supplier invoices into the books.',
    built:'Invoices are read from the inbox, checked and booked. Anything uncertain goes to a human queue.',
-   result:[['26h','saved a month'],['0.4%','need review']]},
-  {photo:'p3',title:'WhatsApp support that never sleeps',client:'D2C skincare brand',tag:'AI agents',chain:['WhatsApp','AI agent','Shopify','IF human?','Reply'],
+   result:[['~20h','saved a month'],['1 in 20','checked by a person']]},
+  {photo:'p3',title:'WhatsApp answers for order questions',client:'D2C skincare brand',tag:'AI agents',chain:['WhatsApp','AI agent','Shopify','IF human?','Reply'],
    problem:'The support team was buried in "where is my order" messages.',
-   built:'An agent answers order and return questions from live Shopify data, and hands off to a person when it should.',
-   result:[['68%','solved without a human'],['< 5s','reply time']]},
-  {photo:'p4',title:'CV screening that explains itself',client:'Recruitment agency',tag:'AI agents',chain:['Email','Parse CV','AI match','IF shortlist','Notion'],
-   problem:'Recruiters read hundreds of CVs for each role, and most were not a fit.',
+   built:'An agent answers order and return questions from live Shopify data, and hands over to a person when it isn\'t sure.',
+   result:[['About half','of chats solved without a person'],['< 1 min','reply time']]},
+  {photo:'p4',title:'CV screening with a reason for each score',client:'Recruitment agency',tag:'AI agents',chain:['Email','Parse CV','AI match','IF shortlist','Notion'],
+   problem:'Recruiters read a lot of CVs for each role, and most were not a fit.',
    built:'CVs are scored against a written rubric. Recruiters get a short brief that gives the reason for every score.',
-   result:[['70%','less screening time'],['100%','scores explained']]},
-  {photo:'p5',title:'One video, a week of content',client:'Creator, 180k followers',tag:'Operations',chain:['YouTube','Transcript','AI write','Check format','LinkedIn'],
+   result:[['About 60%','less time on first screening'],['Every score','comes with a reason']]},
+  {photo:'p5',title:'Posts drafted from each new video',client:'Content creator',tag:'Operations',chain:['YouTube','Transcript','AI write','Check format','LinkedIn'],
    problem:'Each video took half a day to turn into posts and a newsletter.',
    built:'A new upload becomes drafts for LinkedIn and email, checked for format before anything is queued.',
-   result:[['4h → 10min','per video'],['5','posts per video']]}
+   result:[['4h → 30 min','per video'],['5 drafts','checked before posting']]}
 ];
 const QA=[
   {q:"What's your best project?",re:/best|proud|favou?rite|top/i,tools:['search_projects(sort: "impact")','get_project("lead-routing")'],
-   a:'The lead routing workflow for a B2B SaaS team. First replies went from four hours to two minutes and demo bookings rose 31%. Add the Projects node to see how it works.'},
+   a:'The lead routing workflow for a B2B SaaS team. First replies went from about four hours to ten minutes. Add the Projects node to see how it works.'},
   {q:'Can you build a WhatsApp agent?',re:/whatsapp|bot|agent|support|chat/i,tools:['search_projects("whatsapp")'],
-   a:'Yes. Ayan built one for a skincare brand that answers order and return questions from live Shopify data. It solves 68% of chats without a human and hands off when it should.'},
+   a:'Yes. Ayan built one for a skincare brand that answers order and return questions from live Shopify data. It answers about half of the chats on its own and hands over to a person when it isn\'t sure.'},
   {q:'How do you price projects?',re:/price|pricing|cost|charge|budget|rate|much/i,tools:['get_services()'],
    a:'Fixed quotes, agreed before any work starts. A single workflow usually takes one to two weeks, and an AI agent two to four. The first call is free.'},
   {q:'Are you available?',re:/availab|free|start|when|hire|book|busy/i,tools:['check_availability()'],
-   a:'Ayan can take two new projects this month. Add the Book a call node, or send a message and expect a reply within a day.'}
+   a:'Ayan is open to new projects. Add the Book a call node, or send a message and expect a reply within a day.'}
 ];
 const FACTS=[
   'My first automation reminded me to drink water. It still runs.',
-  'I would happily spend three hours automating a ten-minute task. After that it takes zero minutes, forever.',
+  'I would happily spend three hours automating a ten-minute task. After that it takes zero minutes.',
   'I name my workflows like pets. The invoice one answers to Munshi.',
   'The longest I have stared at a 429 error is two hours. Now I add retries before anything else.',
   'I have strong opinions about error handling, and I will share them if you ask.',
@@ -138,10 +138,10 @@ const T={
   about:{name:'Who is Ayan?',sub:'About',color:'coral',items:1,desc:'The short version of me, in three tones',
     params:{tone:{label:'tone',opts:['friendly','professional','one line']}},
     data(p){const tone=p.tone||'friendly';const bio={
-        friendly:["Hey, I'm Ayan. I'm the person who sees someone copy the same thing between two tabs and can't let it go until it's a workflow.","I started by automating my own busywork and got hooked. Now I do it for businesses. I'm honest about what AI can't do yet, and I stick around after launch."],
+        friendly:["Hey, I'm Ayan. When I see someone copy the same thing between two tabs every day, I want to turn it into a workflow.","I started by automating my own busywork and got hooked. Now I do it for businesses. I'm honest about what AI can't do yet, and I stick around after launch."],
         professional:['I design, build and maintain automations for teams that have outgrown manual work. I work mostly in n8n and add AI agents where they measurably help.','Every workflow ships with error alerts, documentation and a handover, so your team owns it from day one.'],
         'one line':['I turn busywork into workflows, and I stay until they run on their own.']}[tone];
-      return{name:'Ayan',role:'n8n + AI automation builder',tone,bio,based_in:'India (IST, UTC+5:30)',works_with:'Founders, ops and support teams',replies_within:'24 hours',status:'Open to new projects'}},
+      return{name:'Ayan',role:'n8n + AI automation builder',tone,bio,based_in:'India (IST, UTC+5:30)',works_with:'Founders, ops and support teams',replies_within:'About a day',status:'Open to new projects'}},
     page(d,p,P){return head('About · 1 item',d.tone==='one line'?'Ayan, in one line.':"Hi, I'm Ayan.")+P+
       `<div class="ab"><div class="ab-pic"><figure class="ph-slot" data-photo="portrait" data-ph="person" style="--ar:4/5"></figure></div><div class="ab-txt">${d.bio.map((x,i)=>`<p${i?'':' class="big"'}>${x}</p>`).join('')}</div></div>
       <dl class="kv"><div><dt>Role</dt><dd>${d.role}</dd></div><div><dt>Based in</dt><dd>${d.based_in}</dd></div><div><dt>Works with</dt><dd>${d.works_with}</dd></div><div><dt>Replies in</dt><dd>${d.replies_within}</dd></div></dl>
@@ -161,7 +161,7 @@ const T={
         {step:'Listen',text:'A 30-minute call. You show me the process that hurts and I ask a lot of questions.'},
         {step:'Map',text:'I draw the workflow before I build it, so you can see every step and say no early.'},
         {step:'Build',text:'I build in n8n, test with your real data and show you progress every few days.'},
-        {step:'Look after',text:'Alerts, documentation and a handover. I stay on call after launch.'}],
+        {step:'Look after',text:'Alerts, documentation and a handover. I keep an eye on it after launch.'}],
       promises:[
         {title:'You own everything',text:'The workflow, the credentials and the docs live in your accounts.'},
         {title:'No jargon',text:'I explain what each step does in plain words.'},
@@ -171,8 +171,8 @@ const T={
       <div class="prom">${d.promises.map(s=>`<div><b>${s.title}</b><span>${s.text}</span></div>`).join('')}</div>`}},
 
   now:{name:'Right now',sub:'Status',color:'coral',items:3,desc:"What I'm building, learning and open to",
-    data(){return{building:'A voice agent that books appointments for clinics',learning:'Evals for AI agents, so "it seems to work" becomes a number',open_to:'Two new projects this month',updated:'November 2026'}},
-    page(d){return head('Status · updated '+d.updated,"What I'm up to right now")+
+    data(){return{building:'A voice agent that books appointments for clinics',learning:'Evals for AI agents, so "it seems to work" becomes a number',open_to:'New projects',updated:'November 2026'}},
+    page(d){return head('Status',"What I'm up to right now",'Last updated '+d.updated+'.')+
       `<div class="now"><div><span class="dot">Building</span><b>${d.building}</b></div><div><span class="dot">Learning</span><b>${d.learning}</b></div><div><span class="dot">Open to</span><b>${d.open_to}</b></div></div>`}},
 
   projects:{name:'Projects',sub:'Case studies',color:'sky',items:5,desc:'Automations I shipped, with the node chain behind each',
@@ -195,24 +195,24 @@ const T={
 
   stack:{name:'Tech stack',sub:'Tools',color:'sky',items:5,desc:'The platforms, models and databases I use',
     data(){return[
-      {group:'Automation',tools:['n8n','Make','Zapier','Webhooks','REST APIs']},
-      {group:'AI',tools:['OpenAI','Claude','Gemini','RAG','Voice agents']},
-      {group:'Data',tools:['Postgres','Supabase','Airtable','Google Sheets','Notion']},
-      {group:'Channels',tools:['Slack','WhatsApp','Telegram','Gmail','HubSpot']},
-      {group:'Code',tools:['JavaScript','Python','SQL','Docker']}]},
+      {group:'Automation',tools:['n8n','Webhooks','REST APIs']},
+      {group:'AI',tools:['OpenAI','Claude','RAG']},
+      {group:'Data',tools:['Postgres','Supabase','Google Sheets','Airtable']},
+      {group:'Channels',tools:['Slack','WhatsApp','Telegram','Gmail']},
+      {group:'Code',tools:['JavaScript','Python','SQL']}]},
     page(d){return head('Tools · 5 groups','What I build with','n8n is home. Everything else gets used when the job calls for it.')+
       `<div class="groups">${d.map(g=>`<div class="grp"><h3>${g.group}</h3><div class="chips">${g.tools.map(t=>`<span${t==='n8n'?' class="main"':''}>${t}</span>`).join('')}</div></div>`).join('')}</div>`}},
 
   results:{name:'Results',sub:'Numbers',color:'mint',items:4,desc:'What the work added up to',
-    data(){return[{value:'40+',label:'workflows shipped'},{value:'310h',label:'saved for clients every month'},{value:'12',label:'teams worked with'},{value:'99.2%',label:'of executions succeed'}]},
+    data(){return[{value:'18',label:'workflows in production'},{value:'~120h',label:'saved for clients each month'},{value:'9',label:'teams worked with'},{value:'98%',label:'of executions succeed'}]},
     page(d){return head('Numbers · 4 items','What the work adds up to')+
       `<div class="bign">${d.map(x=>`<div><b>${x.value}</b><span>${x.label}</span></div>`).join('')}</div><p class="fine">Sample figures for the preview. Your real numbers go here, with a source for each.</p>`}},
 
   testimonials:{name:'Testimonials',sub:'Client words',color:'mint',items:3,desc:'What clients say after working with me',
     data(){return[
-      {quote:'We used to lose leads over the weekend. Now every one gets a reply in minutes, and the workflow is documented, so my team can change it without calling anyone.',name:'Founder',role:'B2B SaaS team',photo:'q1'},
-      {quote:'Month-end took two of us four days. Now it takes an afternoon, and we only check the handful of invoices the workflow flags.',name:'Operations lead',role:'Accounting firm',photo:'q2'},
-      {quote:'The WhatsApp agent handles the repetitive questions and knows when to pass a chat to us. Customers noticed before we told them.',name:'Co-founder',role:'D2C skincare brand',photo:'q3'}]},
+      {quote:'Weekend leads used to wait until Monday. Now they get a reply the same day, and the workflow is documented well enough that my team can change it themselves.',name:'Founder',role:'B2B SaaS team',photo:'q1'},
+      {quote:'Month-end used to take two of us most of a week. Now it takes about a day, and we only check the invoices the workflow flags.',name:'Operations lead',role:'Accounting firm',photo:'q2'},
+      {quote:'The WhatsApp agent handles the repetitive questions and passes a chat to us when it isn\'t sure. We spend our time on the harder ones.',name:'Co-founder',role:'D2C skincare brand',photo:'q3'}]},
     page(d){return head('Client words · 3 items','What clients say','Sample quotes for the preview. Only real quotes, with permission, belong here.')+
       `<div class="quotes">${d.map(q=>`<figure class="quote"><blockquote>“${q.quote}”</blockquote><figcaption><figure class="ph-slot" data-photo="${q.photo}" data-ph="face" style="--ar:1/1;--r:50%"></figure><span><b>${q.name}</b> · ${q.role}</span><span class="ph">sample</span></figcaption></figure>`).join('')}</div>`}},
 
@@ -267,7 +267,7 @@ const T={
   surprise:{name:'Surprise me',sub:'Code',color:'rose',items:1,desc:'A random fact about me, new on every run',
     data(){if(factI<0)factI=Math.floor(Math.random()*FACTS.length);return{fact:FACTS[factI],number:factI+1,of:FACTS.length}},
     page(d){return head('Code · 1 item','One thing about me')+
-      `<div class="fact"><small>FACT ${d.number} OF ${d.of}</small>${d.fact}</div><button class="btn again" data-again>${ICO.play}Execute again</button>`},
+      `<div class="fact"><small>Fact ${d.number} of ${d.of}</small>${d.fact}</div><button class="btn again" data-again>${ICO.play}Execute again</button>`},
     click(e){if(e.target.closest('[data-again]')){factI=(factI+1+Math.floor(Math.random()*(FACTS.length-1)))%FACTS.length;renderPage(false)}}}
 };
 const N=Object.keys(T).length-1;
