@@ -16,7 +16,7 @@
 .tb{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .addfab,.menu,.hint{right:max(16px,env(safe-area-inset-right,0px))}
 .zoom{left:max(16px,env(safe-area-inset-left,0px))}
-.pg-hero .eb{color:var(--c)}
+
 .ab-pic{display:block}
 .pj{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:24px;align-items:start}
 .pj-main{min-width:0}
